@@ -1,10 +1,13 @@
 package utils;
 
+import common.Log;
 import common.constants.Constants;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.File;
 
 public class DriverUtils {
 
@@ -36,5 +39,19 @@ public class DriverUtils {
 
     public static void clickOkOnConfirmationMessage() {
         Constants.WEBDRIVER.switchTo().alert().accept();
+    }
+
+    public static boolean isFileDownloaded(String fileName){
+        File folder = new File(Constants.FILES_DIRECTORY);
+        File[] allFiles = new File(folder.getPath()).listFiles();
+        for (File file : allFiles) {
+            String eachFile = file.getName();
+            if (eachFile.contains(fileName)) {
+                Log.info("--Verified: File : " + fileName + " Has Been Download.");
+                return true;
+            }
+            else continue;
+        }
+        return false;
     }
 }

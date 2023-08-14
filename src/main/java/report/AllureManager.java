@@ -15,15 +15,15 @@ public class AllureManager {
     private AllureManager() {
     }
 
-//    public static void setAllureEnvironmentInformation() {
-//        AllureEnvironmentWriter.allureEnvironmentWriter(
-//                ImmutableMap.<String, String>builder().
-//                        put("Target execution", "Local").
-//                        put("Global timeout", "10").
-//                        put("Faker locale", "us").
-//                        build(), System.getProperty("user.dir")
-//                        + "/target/allure-results/");
-//    }
+    public static void setAllureEnvironmentInformation() {
+        AllureEnvironmentWriter.allureEnvironmentWriter(
+                ImmutableMap.<String, String>builder().
+                        put("Target execution", "Local").
+                        put("Global timeout", "10").
+                        put("Faker locale", "us").
+                        build(), System.getProperty("user.dir")
+                        + "/target/allure-results/");
+    }
 
     @Attachment(value = "Screenshot", type = "image/png")
     public static byte[] takeScreenshotToAttachOnAllureReport() {
