@@ -1,6 +1,8 @@
 package testcases;
 
 import common.Log;
+import common.constants.Constants;
+import drive.DriverUtilities;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.FileDownloaderPage;
@@ -21,7 +23,7 @@ public class TC01_File_Downloader_Page extends BaseTest {
         FileDownloaderPage fileDownloaderPage = new FileDownloaderPage();
         SoftAssert softassert = new SoftAssert();
 
-        DriverUtils.open();
+        DriverUtilities.openURL(Constants.INTERNET_URL);
 
         Log.info("1. Click on File Download link");
         homePage.clickFileDownloadLink();
@@ -41,6 +43,6 @@ public class TC01_File_Downloader_Page extends BaseTest {
         String fileName = fileDownloaderPage.getDownloadFileName(5);
         softassert.assertTrue(DriverUtils.isFileDownloaded(fileName));
 
-        softassert.assertAll();
+        fileDownloaderPage.check(softassert);
     }
 }

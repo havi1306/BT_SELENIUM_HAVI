@@ -33,10 +33,6 @@ public class DriverUtils {
         return Constants.WEBDRIVER.getTitle();
     }
 
-    public static void open(){
-        Constants.WEBDRIVER.navigate().to(Constants.INTERNET_URL);
-    }
-
     public static void clickOkOnConfirmationMessage() {
         Constants.WEBDRIVER.switchTo().alert().accept();
     }
